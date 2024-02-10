@@ -1,0 +1,13 @@
+# General
+node_modules/
+.env
+
+# Dist directory generated assets
+dist/
+docs/
+
+# OS junk
+.DS_Store
+
+# VSCode junk
+.vscode
