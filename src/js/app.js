@@ -131,14 +131,13 @@ function main() {
      * Attributes - Set from buffers
      * Uniforms - Constant accross vertices
      * Varying - pass data from vertex shader to fragment shader
-     */
-    // Create shaders and program and set buffer
+     **/
+    
+    // Shaders --> Program --> Set[buffers, attributes, uniforms] --> Draw Scene
     var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
     var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
     var program = createProgram(gl, vertexShader, fragmentShader);
     gl.useProgram(program);
-    // var colorUniformLocation = gl.getUniformLocation(program, 'u_color');
-    // gl.uniform4f(colorUniformLocation, 245 / 255, 176 / 255, 65 / 255, 1);
     setBuffer(gl, createRectangle(50, 50, 200, 200));
     setViewport(gl)
     setAttribute(gl, program, 'a_position', {
