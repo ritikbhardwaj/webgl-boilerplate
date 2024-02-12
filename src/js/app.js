@@ -1,3 +1,5 @@
+import { runUtils } from './utils.js';
+
 /* eslint no-console:0 consistent-return:0 */
 'use strict';
 
@@ -63,7 +65,7 @@ function setBuffer(gl, geometry) {
 
 function setUniform(gl, program, uniform, data) {
     let resolutionUniformLocation = gl.getUniformLocation(program, uniform);
-    gl.uniform2f(resolutionUniformLocation, ...data);
+    gl.uniform2fv(resolutionUniformLocation, data);
 }
 
 function setAttribute(gl, program, attribute, options) {
@@ -96,6 +98,9 @@ function setViewport(gl) {
 function main() {
     // Get A WebGL context
     var canvas = document.querySelector('#canvas');
+    runUtils(canvas);
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
     var gl = canvas.getContext('webgl');
     if (!gl) {
         return;
