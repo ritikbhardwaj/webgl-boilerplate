@@ -10,10 +10,7 @@ export function runUtils(canvasRef) {
 		mousePosDiv.style.top = `${clientY}px`;
 		mousePosDiv.style.left = `${clientX}px`;
 	});
-	window.addEventListener('resize', (e) => {
-    canvasRef.height = window.innerHeight;
-    canvasRef.width = window.innerWidth;
-	});
+	
 
 	document.addEventListener('keypress', (e) => {
 		if(e.key === 'c') {
