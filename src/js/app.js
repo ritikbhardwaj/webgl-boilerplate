@@ -98,13 +98,20 @@ function setViewport(gl) {
 function main() {
     // Get A WebGL context
     var canvas = document.querySelector('#canvas');
-    runUtils(canvas);
-    canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    runUtils(canvas);
+    let allSet = false;
     var gl = canvas.getContext('webgl');
     if (!gl) {
         return;
     }
+    
+    window.addEventListener('resize', (e) => {
+        if(allSet) {
+            drawScene(gl);
+        }
+    });
 
     // Get the strings for our GLSL shaders
     // var vertexShaderSource = document.querySelector("#vertex-shader-2d").text;
@@ -153,7 +160,9 @@ function main() {
         offset: 0
     });
     setUniform(gl, program, 'u_resolution', [gl.canvas.width, gl.canvas.height]);
+    allSet = true;
     drawScene(gl);
+    
 }
 
 main();
